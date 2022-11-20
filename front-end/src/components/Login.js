@@ -16,7 +16,8 @@ const navigate  = useNavigate();
    }
  })
 
-const handleLogin = async()=>{
+const handleLogin = async(e)=>{
+  e.preventDefault() ;
     console.warn("email,password",email,password);
      let result = await fetch('http://localhost:5000/login',{
         method : 'post',
