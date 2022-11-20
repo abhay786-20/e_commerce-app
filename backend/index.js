@@ -7,7 +7,7 @@ const User = require("./db/User");  // here component is rendered in const User
 const Product = require("./db/Product");
 
 const Jwt = require('jsonwebtoken');
-const jwtKey = 'e-comm';
+const jwtKey = 'e-comm' ;
 
 const app = express();
 
