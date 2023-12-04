@@ -1,5 +1,7 @@
 const express = require('express');
+
 const cors = require("cors");
+const PORT  = process.env.PORT || 5000;
 
 
 require('./db/config');
@@ -120,4 +122,4 @@ function verifyToken(req,resp,next){
 }
 
 
- app.listen(5000);   
+ app.listen(PORT);   
