@@ -1,5 +1,7 @@
 const express = require('express');
+
 const cors = require("cors");
+const PORT  = process.env.PORT || 5000;
 
 
 require('./db/config');
@@ -36,7 +38,7 @@ app.post("/login",async(req,resp)=>{
           Jwt.sign({user},jwtKey,(err,token)=>{
               if(err){
                 resp.send({result: 'Something went wrong '});
-              }
+               }
             resp.send({user, auth:token});
           })
         
@@ -104,7 +106,7 @@ app.get("/search/:key",verifyToken,async(req,resp)=>{
 function verifyToken(req,resp,next){
  let token = req.headers['authorization'];
  if(token){
-      token = token.split(' ')[1];
+      token = token.split(' ')[1]; //taking the 2nd keys as token 
       Jwt.verify(token,jwtKey,(err,valid)=>{
         if(err){
           resp.status(401).send({result : "Please validate  token"});
@@ -120,4 +122,5 @@ function verifyToken(req,resp,next){
 }
 
 
- app.listen(5000);   
+ app.listen(PORT);   
+
